@@ -134,5 +134,42 @@
 
 		 }
 
+
+		 public function pendingfeesmod(){
+
+			$td=date("Y-m-d");
+           
+			$this->db->where("s_to > '$td'");
+			$q=$this->db->get("fee_receipts");
+			$rs=$q->result();
+			$paid=array();
+			foreach($rs as $r){
+
+				$paid[]=$r->student_nid;
+
+			}
+
+             if(count($rs)>0){
+			$q=$this->db->select("student_admission.*,ifeesetup.pickup_point as pic,ifeesetup.busfee")->from("student_admission")->join("ifeesetup","ifeesetup.fee_id=student_admission.pickup_point")->where_not_in("student_admission.sid",$paid)->get();
+			$rs=$q->result();
+			 }else{
+				$q=$this->db->select("student_admission.*,ifeesetup.pickup_point as pic,ifeesetup.busfee")->from("student_admission")->join("ifeesetup","ifeesetup.fee_id=student_admission.pickup_point")->get();
+				$rs=$q->result();
+			 }
+		return $rs;
+
+         
+
+		 }
+
+		public function busreceivedajaxmod($sid){
+
+			$q=$this->db->select("student_admission.*,ifeesetup.pickup_point as pic,ifeesetup.busfee")->from("student_admission")->join("ifeesetup","ifeesetup.fee_id=student_admission.pickup_point")->where("sid",$sid)->get();
+			$rs=$q->row();
+			return $rs;
+
+
+		}
+
 	}
 ?>

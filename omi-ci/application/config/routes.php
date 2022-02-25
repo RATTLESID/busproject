@@ -69,6 +69,8 @@ $route['busfeereceipts']='Admin/busfeereceipts';
 $route['ins-busfeereceipts']='Admin/insbusfeereceipts';
 $route['showfeereceipt']='Admin/showfeereceipt';
 $route['printreceipt/(:any)']='Admin/printreceipt/$1';
+$route['pendingfees']='Admin/pendingfees';
+$route['busajax']='Admin/busreceivedajax';
 
 
 

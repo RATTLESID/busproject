@@ -24,13 +24,17 @@
                     <form action="<?php echo base_url(); ?>ins-busfeereceipts" method="post" >
                        
                     <p>Student Name-ID (Fee)</p>
-                    <p><select name="student_nid">
+                    <p><select name="student_nid" onchange="stddetails(this.value);">
                         <option value="">-Select-</option>
                         <?php foreach($std as $s) { ?>
-                        <option value="<?php echo $s->sid; ?>"><?php echo $s->student_name; ?>-<?php echo $s->student_id; ?> (<?php echo $s->busfee; ?>)</option>
+                        <option value="<?php echo $s->sid; ?>"><?php echo $s->student_id; ?></option>
 
                         <?php } ?>
                     </select></p>
+                  <div id="ajx">
+
+                  </div>
+
                 <p>SERVICE FROM <input type="text" name="s_from" id="s_from"> TO <input type="text" name="s_to" id="s_to"></p>
 
                 <p>PAYMENT METHOD</p>
@@ -85,4 +89,24 @@
     dateFormat: "yy-mm-dd",
     });
   } );
+
+
+  function stddetails(sid){
+   
+    var fd=new FormData();
+    fd.append("sid",sid);
+
+    $.ajax({
+      url:"<?php echo base_url();?>busajax",
+      type:'POST',
+      data:fd,
+      contentType:false,
+      processData:false,
+      success:function(resp){
+
+        $("#ajx").html(resp);
+
+      }
+    })
+  }
   </script>

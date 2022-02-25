@@ -324,6 +324,38 @@ $amount=$this->Admin_mod->amount($snid);
  }
 
 
+ public function pendingfees(){
+
+      $res=$this->Admin_mod->pendingfeesmod();
+
+	  $w=array(
+
+		'row'=>$res
+	  );
+
+	$this->load->view('pendingfees',$w);
+
+
+
+
+
+
+ }
+
+ public function busreceivedajax(){
+
+$sid=$this->input->post("sid");
+
+  $res=$this->Admin_mod->busreceivedajaxmod($sid);
+
+echo "<p>Student name: ".$res->student_name."</p>"; 
+echo "<p>Student pickup point: ".$res->pic."</p>";
+echo "<p>Student Bus fee: ".$res->busfee."/month</p>";
+ }
+
+
+
+
 
  
 }
