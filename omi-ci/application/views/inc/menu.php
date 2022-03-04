@@ -67,6 +67,26 @@
                     <span>Pending Fees</span></a>
             </li>
 
+        
+
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapsefour"
+                    aria-expanded="true" aria-controls="collapsefour">
+                    <i class="fas fa-fw fa-cog"></i>
+                    <span>Fund Management</span>
+                </a>
+                <div id="collapsefour" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        
+                        <a class="collapse-item" href="<?php echo base_url(); ?>fundtransfer">Fund Transfer</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>list-fundtransfer">List Fund Transfer</a>
+                        <a class="collapse-item" href="<?php echo base_url(); ?>pettycash">Petty Cash</a>
+                        
+                    </div>
+                    
+                </div>
+            </li>
 
             
 

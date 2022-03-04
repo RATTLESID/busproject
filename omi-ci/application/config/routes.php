@@ -71,6 +71,14 @@ $route['showfeereceipt']='Admin/showfeereceipt';
 $route['printreceipt/(:any)']='Admin/printreceipt/$1';
 $route['pendingfees']='Admin/pendingfees';
 $route['busajax']='Admin/busreceivedajax';
+$route['fundtransfer']='Admin/fundtransfer';
+$route['insfundtransfer']='Admin/insfundtransfer';
+$route['list-fundtransfer']='Admin/fundtransfertable';
+$route['fundtransferdata']='Admin/fundtransferdata';
+$route['pettycash']='Admin/pettycash';
+$route['ins-pettycash']='Admin/inspettycash';
+
+
 
 
 

@@ -353,6 +353,100 @@ echo "<p>Student pickup point: ".$res->pic."</p>";
 echo "<p>Student Bus fee: ".$res->busfee."/month</p>";
  }
 
+ public function fundtransfer(){
+
+$this->load->view('fundtransfer');
+
+
+ }
+
+ public function insfundtransfer(){
+
+	$f_from=$this->input->post("f_from");
+	$f_to=$this->input->post("f_to");
+
+    $res=$this->Admin_mod->insfundtransfermod($f_from ,$f_to);
+	$total=0;
+	foreach($res as $r){
+		$total=$total+$r->amount;
+
+	 }
+	 echo $total;
+
+
+
+ }
+
+
+ 
+ public function fundtransferdata(){
+
+	$f_from=$this->input->post("f_from");
+	$f_to=$this->input->post("f_to");
+	$total=$this->input->post("total");
+	$pd=date("Y-m-d",time());
+
+	$w=array(
+      'f_from'=>$f_from,
+	  'f_to'=>$f_to,
+	  'f_amount'=>$total,
+	  'pay_date'=>$pd
+	);
+
+	$this->Admin_mod->fundtransferdatamod($w);
+
+	redirect(base_url().'list-fundtransfer');
+
+
+ }
+
+
+
+
+
+
+
+ public function fundtransfertable(){
+	$res=$this->Admin_mod->fundtransfertablemod();
+
+	$w=array(
+
+		'row'=>$res
+	);
+
+$this->load->view('fundtransfertable',$w);
+
+
+
+ }
+
+
+ public function pettycash(){
+
+
+	
+
+	$this->load->view('pettycash');
+
+
+
+
+ }
+
+ public function inspettycash(){
+
+   $pa=$this->input->post('petty_amount');
+   $pd=$this->input->post('pay_date');
+
+   $w=array(
+     'pcamount'=>$pa,
+     'paydate'=>$pd
+
+   );
+
+   $this->Admin_mod->inspettycashmod($w);
+
+ }
 
 
 

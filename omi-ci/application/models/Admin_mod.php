@@ -171,5 +171,41 @@
 
 		}
 
+		public function insfundtransfermod($f_from ,$f_to){
+
+           $this->db->where("s_from >= '$f_from'");
+		   $this->db->where("s_from <= '$f_to'");
+		   $q=$this->db->get("fee_receipts");
+		   $rs=$q->result();
+		   return $rs;
+
+
+		}
+
+
+		public function fundtransferdatamod($w){
+           
+			$this->db->insert('fund_transfer',$w);
+
+
+		}
+
+
+		public function fundtransfertablemod(){
+			$this->db->order_by("f_id", "asc");
+			$q=$this->db->get("fund_transfer");
+			$rs=$q->result();
+			return $rs;
+		}
+  
+
+		public function inspettycashmod($w){
+
+
+			$this->db->insert('pettycash',$w);
+		}
+
+
 	}
+
 ?>
